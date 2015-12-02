@@ -173,6 +173,7 @@ namespace Budget.Controllers
             var user = db.Users.Find(User.Identity.GetUserId());
             hh.Users.Add(user);
             db.InviteCodes.Remove(inviteCode);
+            db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
