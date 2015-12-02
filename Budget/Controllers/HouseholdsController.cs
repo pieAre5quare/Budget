@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Budget.Models;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
+using Budget.Helpers;
 
 namespace Budget.Controllers
 {
@@ -54,6 +56,19 @@ namespace Budget.Controllers
                 var user = db.Users.Find(User.Identity.GetUserId());
                 household.Users.Add(user);
                 db.Households.Add(household);
+
+                var cat1 = new Category();
+                var cat2 = new Category();
+                var cat3 = new Category(); 
+                cat1.Name = "Salary";
+                cat2.Name = "Rent";
+                cat3.Name = "Food";
+                cat1.HouseholdId = household.Id;
+                cat2.HouseholdId = household.Id;
+                cat3.HouseholdId = household.Id;
+                db.Categories.Add(cat1);
+                db.Categories.Add(cat2);
+                db.Categories.Add(cat3);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -162,11 +177,17 @@ namespace Budget.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Leave()
+        [AuthorizeHouseholdRequired]
+        public async Task<ActionResult> Leave()
         {
-            var user = db.Users.Find(User.Identity.GetUserId());
+            var userid = User.Identity.GetUserId();
+
+            var user = db.Users.Find(userid);
             var hh = user.Household;
             hh.Users.Remove(user);
+            db.SaveChanges();
+
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
 
             return RedirectToAction("Create");
         }

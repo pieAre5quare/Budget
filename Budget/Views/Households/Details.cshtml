@@ -23,7 +23,31 @@
     {
         <text> @user.DisplayName</text>
     }
+    @Html.ActionLink("Leave Household", "Leave", "Households", new { }, new { @class = "btn btn-primary" })
 </div>
+
+<div>
+    @using (Html.BeginForm("Invite", "Households"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Email invite</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-control">
+                @Html.TextBox("email")
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

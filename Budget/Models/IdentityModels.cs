@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Mvc;
+using System.Web;
+using Budget.Helpers;
 
 namespace Budget.Models
 {
@@ -21,6 +24,7 @@ namespace Budget.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+            userIdentity.AddClaim(new Claim("HouseholdId", HouseholdId.ToString()));
             return userIdentity;
         }
     }
@@ -42,6 +46,32 @@ namespace Budget.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+    }
+
+    public class AuthorizeHouseholdRequired : AuthorizeAttribute
+    {
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
+        {
+            var isAuthorized = base.AuthorizeCore(httpContext);
+            if(!isAuthorized)
+            {
+                return false;
+            }
+            return httpContext.User.Identity.IsInHousehold();
+        }
+
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            if(!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                base.HandleUnauthorizedRequest(filterContext);
+
+            } else
+            {
+                filterContext.Result = new RedirectToRouteResult(
+                    new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "CreateJoinHousehold" }));
+            }
         }
     }
 }
