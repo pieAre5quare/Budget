@@ -24,13 +24,11 @@ namespace Budget.Controllers
         }
 
         // GET: Households/Details/5
-        public ActionResult Details(int? id)
+        [AuthorizeHouseholdRequired]
+        public ActionResult Details()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Household household = db.Households.Find(id);
+
+            Household household = User.Identity.GetUserHousehold();
             if (household == null)
             {
                 return HttpNotFound();
@@ -59,7 +57,7 @@ namespace Budget.Controllers
 
                 var cat1 = new Category();
                 var cat2 = new Category();
-                var cat3 = new Category(); 
+                var cat3 = new Category();
                 cat1.Name = "Salary";
                 cat2.Name = "Rent";
                 cat3.Name = "Food";

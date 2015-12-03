@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Budget.Models
 {
-    public class Budget
+    public class BudgetItem
     {
         public int Id { get; set; }
         [Required]

@@ -12,6 +12,8 @@ namespace Budget.Helpers
 {
     public static class Extensions
     {
+        private static ApplicationDbContext db = new ApplicationDbContext();
+
         public static string GetHouseholdId(this IIdentity user)
         {
             var claimsIdentity = (ClaimsIdentity)user;
@@ -37,6 +39,11 @@ namespace Budget.Helpers
             context.GetOwinContext().Authentication.SignOut();
             await context.GetOwinContext().Get<ApplicationSignInManager>()
                 .SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        }
+
+        public static Household GetUserHousehold(this IIdentity user)
+        {
+            return db.Households.Find(Convert.ToInt32(user.GetHouseholdId()));
         }
     }
 }

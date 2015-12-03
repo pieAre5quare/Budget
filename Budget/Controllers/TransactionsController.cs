@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Budget.Models;
+using Budget.Helpers;
 
 namespace Budget.Controllers
 {
@@ -37,11 +38,15 @@ namespace Budget.Controllers
         }
 
         // GET: Transactions/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.BankAccountId = new SelectList(db.BankAccounts, "Id", "Name");
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            return View();
+            var hh = db.Households.Find(Convert.ToInt32(User.Identity.GetHouseholdId()));
+
+            ViewBag.CategoryId = new SelectList(hh.Categories, "Id", "Name");
+            Transaction transaction = new Transaction();
+            transaction.BankAccountId = id;
+            
+            return View(transaction);
         }
 
         // POST: Transactions/Create

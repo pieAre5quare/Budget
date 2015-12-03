@@ -35,7 +35,7 @@ namespace Budget.Models
         public DbSet<Household> Households { get; set; }
         public DbSet<BankAccount> BankAccounts { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Budget> Budgets { get; set; }
+        public DbSet<BudgetItem> Budgets { get; set; }
         public DbSet<InviteCode> InviteCodes { get; set; }
 
         public ApplicationDbContext()
@@ -70,7 +70,7 @@ namespace Budget.Models
             } else
             {
                 filterContext.Result = new RedirectToRouteResult(
-                    new System.Web.Routing.RouteValueDictionary(new { controller = "Home", action = "CreateJoinHousehold" }));
+                    new System.Web.Routing.RouteValueDictionary(new { controller = "Household", action = "Create" }));
             }
         }
     }

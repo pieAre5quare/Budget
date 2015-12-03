@@ -12,7 +12,7 @@ namespace Budget.Models
         {
             this.Users = new HashSet<ApplicationUser>();
             this.Accounts = new HashSet<BankAccount>();
-            this.Budgets = new HashSet<Budget>();
+            this.Budgets = new HashSet<BudgetItem>();
             this.Codes = new HashSet<InviteCode>();
             this.Categories = new HashSet<Category>();
         }
@@ -22,7 +22,7 @@ namespace Budget.Models
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
         public virtual ICollection<BankAccount> Accounts { get; set; }
-        public virtual ICollection<Budget> Budgets { get; set; }
+        public virtual ICollection<BudgetItem> Budgets { get; set; }
         public virtual ICollection<InviteCode> Codes { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
 
