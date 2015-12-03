@@ -13,7 +13,9 @@ namespace Budget.Models
         [Required]
         public string Name { get; set; }
         public int? HouseholdId { get; set; }
+        public int? BudgetId { get; set; }
 
         public virtual Household Household { get; set; }
+        public virtual BudgetItem Budget { get; set; }
     }
 }

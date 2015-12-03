@@ -11,6 +11,7 @@ namespace Budget.Models
         public int Id { get; set; }
         [Required]
         public decimal Amount { get; set; }
+        public decimal MonthlyTotal { get; set; }
         public int HouseholdId { get; set; }
         public int CategoryId { get; set; }
 

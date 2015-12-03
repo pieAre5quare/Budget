@@ -56,6 +56,7 @@ namespace Budget.Controllers
         {
             if (ModelState.IsValid)
             {
+                budgetItem.MonthlyTotal = 0;
                 db.Budgets.Add(budgetItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");

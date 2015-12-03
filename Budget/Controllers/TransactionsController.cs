@@ -61,6 +61,7 @@ namespace Budget.Controllers
                 var account = db.BankAccounts.Find(transaction.BankAccountId);
                 if (!transaction.IsDeposit)
                     transaction.Amount *= -1;
+                
                 account.Balance += transaction.Amount;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
