@@ -19,6 +19,15 @@ namespace Budget.Controllers
             return View(hh);
         }
 
+        public PartialViewResult _RecentTransactions()
+        {
+            var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
+            List<Transaction> transactions = db.Transactions.Where(t => t.BankAccount.HouseholdId == hhId)
+                .OrderByDescending(tran => tran.Date).Take(10).ToList();
+            
+            return PartialView(transactions);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

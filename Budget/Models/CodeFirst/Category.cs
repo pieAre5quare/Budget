@@ -12,10 +12,10 @@ namespace Budget.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public decimal? BudgetedAmount { get; set; }
         public int? HouseholdId { get; set; }
-        public int? BudgetId { get; set; }
 
         public virtual Household Household { get; set; }
-        public virtual BudgetItem Budget { get; set; }
+        
     }
 }

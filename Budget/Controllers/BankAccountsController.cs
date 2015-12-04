@@ -16,9 +16,11 @@ namespace Budget.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: BankAccounts
+        [AuthorizeHouseholdRequired]
         public ActionResult Index()
         {
-            var bankAccounts = db.BankAccounts.Include(b => b.Household);
+            var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
+            var bankAccounts = db.BankAccounts.Where(b => b.HouseholdId == hhId);
             return View(bankAccounts.ToList());
         }
 

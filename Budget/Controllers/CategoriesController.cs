@@ -52,7 +52,7 @@ namespace Budget.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,HouseholdId")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Name,BudgetedAmount,HouseholdId")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Budget.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,HouseholdId")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Name,BudgetedAmount,HouseholdId")] Category category)
         {
             if (ModelState.IsValid)
             {

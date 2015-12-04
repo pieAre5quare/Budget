@@ -63,6 +63,7 @@ namespace Budget.Controllers
                     transaction.Amount *= -1;
                 
                 account.Balance += transaction.Amount;
+                transaction.Date = DateTimeOffset.Now;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
                 return RedirectToAction("Index");
