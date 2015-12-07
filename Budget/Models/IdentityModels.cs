@@ -70,7 +70,7 @@ namespace Budget.Models
             } else
             {
                 filterContext.Result = new RedirectToRouteResult(
-                    new System.Web.Routing.RouteValueDictionary(new { controller = "Household", action = "Create" }));
+                    new System.Web.Routing.RouteValueDictionary(new { controller = "Households", action = "Create" }));
             }
         }
     }

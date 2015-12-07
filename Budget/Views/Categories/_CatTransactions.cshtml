@@ -6,8 +6,7 @@
 
 <h2>_CatTransactions</h2>
 
-<h1>Total</h1>
-@(total)
+
 <table class="table">
     <tr>
         <th>
@@ -33,10 +32,10 @@
         </th>
         <th></th>
     </tr>
-    @{decimal total = 0; }
+   
     @foreach (var item in Model)
     {
-        total += item.Amount;
+        
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.BankAccount.Name)

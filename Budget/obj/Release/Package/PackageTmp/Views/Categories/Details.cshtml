@@ -31,6 +31,8 @@
         </dt>
 
         <dd>
+            @Html.DisplayFor(model => model.BudgetUsed)
+            <text>Of</text>
             @Html.DisplayFor(model => model.BudgetedAmount)
         </dd>
 
@@ -40,6 +42,7 @@
 <div>
     @Html.Action("_CatTransactions", new { id = Model.Id })
 </div>
+
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

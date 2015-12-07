@@ -68,7 +68,7 @@ namespace Budget.Controllers
                 db.Categories.Add(cat2);
                 db.Categories.Add(cat3);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(household);

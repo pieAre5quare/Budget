@@ -63,9 +63,11 @@ namespace Budget.Controllers
                 var account = db.BankAccounts.Find(transaction.BankAccountId);
                 if (!transaction.IsDeposit)
                     transaction.Amount *= -1;
-                
+                var cat = db.Categories.Find(transaction.CategoryId);
+                cat.BudgetUsed += Math.Abs(transaction.Amount);
                 account.Balance += transaction.Amount;
                 transaction.Date = DateTimeOffset.Now;
+                db.Entry(cat).State = EntityState.Modified;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -141,6 +143,9 @@ namespace Budget.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Transaction transaction = db.Transactions.Find(id);
+            var account = db.BankAccounts.Find(transaction.BankAccountId);
+            account.Balance -= transaction.Amount;
+            db.Entry(account).State = EntityState.Modified;
             db.Transactions.Remove(transaction);
             db.SaveChanges();
             return RedirectToAction("Index");

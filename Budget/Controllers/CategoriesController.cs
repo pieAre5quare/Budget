@@ -56,6 +56,7 @@ namespace Budget.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.BudgetUsed = 0;
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
