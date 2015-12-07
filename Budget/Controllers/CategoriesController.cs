@@ -16,6 +16,7 @@ namespace Budget.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
+        [AuthorizeHouseholdRequired]
         public ActionResult Index()
         {
             var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
@@ -24,6 +25,7 @@ namespace Budget.Controllers
         }
 
         // GET: Categories/Details/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,6 +41,7 @@ namespace Budget.Controllers
         }
 
         // GET: Categories/Create
+        [AuthorizeHouseholdRequired]
         public ActionResult Create()
         {
             var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
@@ -67,6 +70,7 @@ namespace Budget.Controllers
         }
 
         // GET: Categories/Edit/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -100,6 +104,7 @@ namespace Budget.Controllers
         }
 
         // GET: Categories/Delete/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -2,7 +2,15 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = null;
 }
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+
+<link href="~/Content/sb-admin-2.css" rel="stylesheet" />
+
 
 <h2>@ViewBag.Title.</h2>
 <div class="row">
