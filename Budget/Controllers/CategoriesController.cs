@@ -124,6 +124,15 @@ namespace Budget.Controllers
             return RedirectToAction("Index");
         }
 
+        
+
+        public PartialViewResult _CatTransactions(int id)
+        {
+            var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
+            var transactions = db.Transactions.Where(t => t.CategoryId == id && t.BankAccount.HouseholdId == hhId).ToList();
+            return PartialView(transactions);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

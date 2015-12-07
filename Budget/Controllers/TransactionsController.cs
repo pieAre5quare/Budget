@@ -23,6 +23,7 @@ namespace Budget.Controllers
         }
 
         // GET: Transactions/Details/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +39,7 @@ namespace Budget.Controllers
         }
 
         // GET: Transactions/Create
+        [AuthorizeHouseholdRequired]
         public ActionResult Create(int id)
         {
             var hh = db.Households.Find(Convert.ToInt32(User.Identity.GetHouseholdId()));
@@ -75,6 +77,7 @@ namespace Budget.Controllers
         }
 
         // GET: Transactions/Edit/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -100,6 +103,13 @@ namespace Budget.Controllers
         {
             if (ModelState.IsValid)
             {
+                var oldTransaction = db.Transactions.AsNoTracking().FirstOrDefault(t => t.Id == transaction.Id);
+                if(oldTransaction.Amount != transaction.Amount)
+                {
+                    var account = db.BankAccounts.Find(transaction.BankAccountId);
+                    account.Balance -= oldTransaction.Amount;
+                    account.Balance += transaction.Amount;
+                }
                 db.Entry(transaction).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,6 +120,7 @@ namespace Budget.Controllers
         }
 
         // GET: Transactions/Delete/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Delete(int? id)
         {
             if (id == null)

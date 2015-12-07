@@ -1,0 +1,56 @@
+﻿@model Budget.Models.Household
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@Model.Name</h2>
+
+        </div>
+        <div class="col-md-12">
+            <p>
+                @Html.ActionLink("Create New", "Create", "BankAccounts")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    
+                    <th></th>
+                </tr>
+                
+                @foreach (var item in Model.Accounts)
+                {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Balance)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "BankAccounts", new { id = item.Id }, null) |
+                            @Html.ActionLink("Details", "Details", "BankAccounts", new { id = item.Id }, null) |
+                            @Html.ActionLink("Delete", "Delete", "BankAccounts", new { id = item.Id }, null) |
+                            @Html.ActionLink("Add transaction", "Create", "Transactions", new { id = item.Id }, null)
+                        </td>
+                    </tr>
+                }
+                
+
+            </table>
+        </div>
+        <div>
+            @Html.Action("_RecentTransactions")
+        </div>
+    </div>
+
+
+

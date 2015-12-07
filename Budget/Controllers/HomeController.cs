@@ -22,7 +22,7 @@ namespace Budget.Controllers
         public PartialViewResult _RecentTransactions()
         {
             var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
-            List<Transaction> transactions = db.Transactions.Where(t => t.BankAccount.HouseholdId == hhId)
+            List<Transaction> transactions = db.Transactions.Where(t => t.BankAccount.HouseholdId == hhId && !t.BankAccount.IsArchived )
                 .OrderByDescending(tran => tran.Date).Take(10).ToList();
             
             return PartialView(transactions);

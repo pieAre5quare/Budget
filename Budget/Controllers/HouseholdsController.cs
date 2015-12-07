@@ -75,6 +75,7 @@ namespace Budget.Controllers
         }
 
         // GET: Households/Edit/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -106,6 +107,7 @@ namespace Budget.Controllers
         }
 
         // GET: Households/Delete/5
+        [AuthorizeHouseholdRequired]
         public ActionResult Delete(int? id)
         {
             if (id == null)
