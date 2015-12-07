@@ -37,7 +37,18 @@ namespace Budget.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            var transactions = db.Transactions.Where(t => t.CategoryId == category.Id && t.Date.Month.CompareTo(DateTimeOffset.Now.Month) == 0).ToList();
+            decimal budgetUsed = 0;
+            foreach(var trans in transactions)
+            {
+                budgetUsed += Math.Abs(trans.Amount);
+            }
+
+            var vm = new CatDetailsVM();
+            vm.Category = category;
+            vm.BudgetUsed = budgetUsed;
+
+            return View(vm);
         }
 
         // GET: Categories/Create

@@ -1,4 +1,4 @@
-﻿@model Budget.Models.Category
+﻿@model Budget.Models.CatDetailsVM
 
 @{
     ViewBag.Title = "Details";
@@ -11,40 +11,40 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Household.Name)
+            @Html.DisplayNameFor(model => model.Category.Household.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Household.Name)
+            @Html.DisplayFor(model => model.Category.Household.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Category.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Category.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BudgetedAmount)
+            @Html.DisplayNameFor(model => model.Category.BudgetedAmount)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.BudgetUsed)
             <text>Of</text>
-            @Html.DisplayFor(model => model.BudgetedAmount)
+            @Html.DisplayFor(model => model.Category.BudgetedAmount)
         </dd>
 
     </dl>
 </div>
 
 <div>
-    @Html.Action("_CatTransactions", new { id = Model.Id })
+    @Html.Action("_CatTransactions", new { id = Model.Category.Id })
 </div>
 
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Category.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
