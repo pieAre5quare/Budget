@@ -27,16 +27,26 @@ namespace Budget.Controllers
         // GET: BankAccounts/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BankAccount bankAccount = db.BankAccounts.Find(id);
+            var bankAccount = db.BankAccounts.Find(id);
             if (bankAccount == null)
             {
                 return HttpNotFound();
             }
+            
+            
+
             return View(bankAccount);
+        }
+
+        public PartialViewResult _AccountTransactions(int id)
+        {
+            var transactions = db.Transactions.Where(t => t.BankAccountId == id).OrderByDescending(tran => tran.Date).ToList();
+            return PartialView(transactions);
         }
 
         // GET: BankAccounts/Create

@@ -64,7 +64,7 @@ namespace Budget.Controllers
                 if (!transaction.IsDeposit)
                     transaction.Amount *= -1;
                 var cat = db.Categories.Find(transaction.CategoryId);
-                cat.BudgetUsed += Math.Abs(transaction.Amount);
+                
                 account.Balance += transaction.Amount;
                 transaction.Date = DateTimeOffset.Now;
                 db.Entry(cat).State = EntityState.Modified;

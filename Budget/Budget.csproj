@@ -196,6 +196,7 @@
     </Compile>
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountDetailsVM.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CatDetailsVM.cs" />
     <Compile Include="Models\CodeFirst\BankAccount.cs" />
@@ -474,6 +475,7 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Home\_RecentTransactions.cshtml" />
     <Content Include="Views\Categories\_CatTransactions.cshtml" />
+    <Content Include="Views\BankAccounts\_AccountTransactions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
