@@ -4,7 +4,7 @@
     ViewBag.Title = "_RecentTransactions";
 }
 
-<h2>_RecentTransactions</h2>
+<h2 class="text-center">Recent Transactions</h2>
 
 
 <table class="table">
@@ -21,9 +21,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -41,13 +41,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit","Transactions", new { id=item.Id }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", "Transactions", new { id=item.Id }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Delete", "Delete", "Transactions", new { id=item.Id }, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("Edit", "Edit","Transactions", new { id=item.Id }, new { @class = "btn btn-primary" })*@
+            @Html.ActionLink("Details", "Details", "Transactions", new { id=item.Id }, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("Delete", "Delete", "Transactions", new { id=item.Id }, new { @class = "btn btn-primary" })*@
         </td>
     </tr>
 }

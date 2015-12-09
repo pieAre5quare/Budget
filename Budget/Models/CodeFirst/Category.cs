@@ -14,6 +14,7 @@ namespace Budget.Models
         public string Name { get; set; }
         public decimal? BudgetedAmount { get; set; }
         public int? HouseholdId { get; set; }
+        public bool isIncome { get; set; }
 
         public virtual Household Household { get; set; }
         

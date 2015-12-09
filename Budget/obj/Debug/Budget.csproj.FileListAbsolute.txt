@@ -72,3 +72,7 @@ c:\users\pieare5quare\documents\visual studio 2015\Projects\Budget\Budget\bin\Se
 c:\users\pieare5quare\documents\visual studio 2015\Projects\Budget\Budget\bin\SendGridMail.dll
 c:\users\pieare5quare\documents\visual studio 2015\Projects\Budget\Budget\bin\System.Net.Http.Formatting.dll
 c:\users\pieare5quare\documents\visual studio 2015\Projects\Budget\Budget\bin\System.Net.Http.Formatting.xml
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.dll
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.WebHost.dll
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.xml
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.WebHost.xml

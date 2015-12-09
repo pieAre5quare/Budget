@@ -37,7 +37,9 @@ namespace Budget.Controllers
             {
                 return HttpNotFound();
             }
-            var transactions = db.Transactions.Where(t => t.CategoryId == category.Id && t.Date.Month.CompareTo(DateTimeOffset.Now.Month) == 0).ToList();
+            var transactions = db.Transactions.Where(t => t.CategoryId == category.Id && 
+                t.Date.Month.CompareTo(DateTimeOffset.Now.Month) == 0
+                && t.Date.Year.CompareTo(DateTimeOffset.Now.Year) == 0).ToList();
             decimal budgetUsed = 0;
             foreach(var trans in transactions)
             {

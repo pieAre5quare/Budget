@@ -59,6 +59,7 @@ namespace Budget.Controllers
                 var cat2 = new Category();
                 var cat3 = new Category();
                 cat1.Name = "Salary";
+                cat1.isIncome = true;
                 cat2.Name = "Rent";
                 cat3.Name = "Food";
                 cat1.HouseholdId = household.Id;
@@ -101,7 +102,7 @@ namespace Budget.Controllers
             {
                 db.Entry(household).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(household);
         }

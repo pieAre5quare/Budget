@@ -41,5 +41,10 @@ namespace Budget.Controllers
 
             return View();
         }
+
+        public ActionResult Chart()
+        {
+            return View();
+        }
     }
 }
