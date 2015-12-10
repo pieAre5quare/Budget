@@ -1,1 +1,14 @@
-﻿
+﻿.bank-heading {
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.bank-balance {
+    font-size:30px;
+
+}
+
+.heading-button {
+    padding-top: 0;
+    padding-bottom: 0;
+}

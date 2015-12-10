@@ -16,9 +16,12 @@ namespace Budget.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Transactions
+        [AuthorizeHouseholdRequired]
         public ActionResult Index()
         {
-            var transactions = db.Transactions.Include(t => t.BankAccount).Include(t => t.Category);
+            var hhId = Convert.ToInt32(User.Identity.GetHouseholdId());
+            var transactions = db.Transactions.Where(trans => trans.BankAccount.HouseholdId == hhId)
+                .Include(t => t.BankAccount).Include(t => t.Category);
             return View(transactions.ToList());
         }
 
@@ -47,6 +50,7 @@ namespace Budget.Controllers
             ViewBag.CategoryId = new SelectList(hh.Categories, "Id", "Name");
             Transaction transaction = new Transaction();
             transaction.BankAccountId = id;
+            transaction.Date = DateTimeOffset.Now;
             
             return View(transaction);
         }
@@ -66,7 +70,6 @@ namespace Budget.Controllers
                 var cat = db.Categories.Find(transaction.CategoryId);
                 
                 account.Balance += transaction.Amount;
-                transaction.Date = DateTimeOffset.Now;
                 db.Entry(cat).State = EntityState.Modified;
                 db.Transactions.Add(transaction);
                 db.SaveChanges();

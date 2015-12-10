@@ -138,6 +138,11 @@ namespace Budget.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            var transaction = db.Transactions.Where(t => t.CategoryId == id).ToList();
+            foreach (var trans in transaction)
+            {
+                trans.CategoryId = null;
+            }
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");

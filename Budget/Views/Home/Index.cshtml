@@ -3,52 +3,59 @@
     ViewBag.Title = "Home Page";
 }
 
-
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
     <div class="row">
-        <div class="col-md-12">
-            <h2 class="text-center">Accounts</h2>
-
-        </div>
-        <div class="col-md-12">
-            <p>
-                @Html.ActionLink("Create New", "Create", "BankAccounts")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Balance
-                    </th>
-                    
-                    <th></th>
-                </tr>
-                
-                @foreach (var item in Model.Accounts)
-                {
-                    if (!item.IsArchived)
-                    {
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Accounts
+                    <div class="pull-right">
+                        @Html.ActionLink("Create New", "Create", "BankAccounts", new { @class = "btn btn-sm btn-default heading-button" })
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
                         <tr>
-                        
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                $@Html.DisplayFor(modelItem => item.Balance)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", "BankAccounts", new { id = item.Id }, null) |
-                                @Html.ActionLink("Details", "Details", "BankAccounts", new { id = item.Id }, null) |
-                                @Html.ActionLink("Delete", "Delete", "BankAccounts", new { id = item.Id }, null) |
-                                @Html.ActionLink("Add transaction", "Create", "Transactions", new { id = item.Id }, null)
-                            </td>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Balance
+                            </th>
+
+                            <th></th>
                         </tr>
-                    }
-                }
+
+                        @foreach (var item in Model.Accounts)
+                        {
+                            if (!item.IsArchived)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        $@Html.DisplayFor(modelItem => item.Balance)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", "BankAccounts", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Details", "Details", "BankAccounts", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Add transaction", "Create", "Transactions", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                    </td>
+                                </tr>
+                            }
+                        }
 
 
-            </table>
+                    </table>
+                </div>
+            </div>
         </div>
         
     </div>

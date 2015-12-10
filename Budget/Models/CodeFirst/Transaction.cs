@@ -10,10 +10,11 @@ namespace Budget.Models
     {
         public int Id { get; set; }
         public int BankAccountId { get; set; }
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         [Required]
         public bool IsDeposit { get; set; }
         public bool IsReconciled { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MMM dd yyyy}")]
         public DateTimeOffset Date { get; set; }
         [Required]
         public decimal Amount { get; set; }

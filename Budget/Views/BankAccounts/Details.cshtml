@@ -4,37 +4,17 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>BankAccount</h4>
-    <hr />
-    <dl class="dl-horizontal">
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="bank-heading">
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Balance)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Balance)
-        </dd>
-
-    </dl>
+        </div>
+        <div class="bank-balance">
+            @Html.DisplayNameFor(model => model.Balance): $@Html.DisplayFor(model => model.Balance)
+        </div>
+    </div>
 </div>
 
 <div>
     @Html.Action("_AccountTransactions",Model.Id)
 </div>
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
