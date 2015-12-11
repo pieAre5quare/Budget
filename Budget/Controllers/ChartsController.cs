@@ -36,5 +36,12 @@ namespace Budget.Controllers
             //    new { label= "2012", value= 20 }};
             return Content(JsonConvert.SerializeObject(bar), "application/json");
         }
+
+        public ActionResult SpendingChart()
+        {
+            Household hh = User.Identity.GetUserHousehold();
+            var donut = (from t in db.Transactions
+                         where t.BankAccount.HouseholdId == hh.Id && !t.IsDeposit && !t.BankAccount.IsArchived)
+        }
     }
 }

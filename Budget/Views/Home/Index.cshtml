@@ -57,7 +57,18 @@
                 </div>
             </div>
         </div>
-        
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Spending
+                </div>
+                <div class="panel-body">
+                    <div id="spending-chart" style="height: 250px;" class="col-md-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 <div class="row">
     <div class="col-md-6">
@@ -65,10 +76,21 @@
             @Html.Action("_RecentTransactions")
         </div>
     </div>
-    <h2 class="text-center">Monthly Budgets</h2>
-    <div id="MyChart" style="height: 250px;" class="col-md-6">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Monthly Budgets
+            </div>
 
+            <div class="panel-body">
+                <div id="MyChart" style="height: 250px;" class="col-md-12">
+
+                </div>
+            </div>
+
+        </div>
     </div>
+
 </div>
 
 
@@ -116,4 +138,16 @@
 
     });
     </script>
+<script type="text/javascript">
+    $(function () {
+
+        $.post('@Url.Action("SpendingChart","Charts")').then(function (response) {
+            new Morris.Bar({
+                element: 'spending-chart',
+                data: response
+            });
+        });
+
+    });
+</script>
 }

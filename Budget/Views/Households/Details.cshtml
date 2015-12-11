@@ -11,7 +11,7 @@
             <h2>Household Members</h2>
             <hr />
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 well well-lg">
                     @foreach (var user in Model.Users)
                     {
                         <text> @user.FirstName @user.LastName</text>
@@ -31,9 +31,12 @@
                     <h2>Send invite</h2>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-control">
-                    <strong>Email address:</strong>
-                        @Html.TextBox("email")
+                    <div class="form-control well well-lg email-well">
+                        <div>
+                            <strong>Email address:</strong>
+
+                            @Html.TextBox("email")
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -44,12 +47,6 @@
                 </div>
             }
         </div>
-
-        @*<div class="row">
-            <div class="col-md-6">
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-            </div>
-        </div>*@
         
     </div>
 </div>
