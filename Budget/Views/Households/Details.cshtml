@@ -4,48 +4,57 @@
     ViewBag.Title = "Details";
 }
 
-
+<br /><br />
 <div class="row">
     <div>
         <div class="col-md-6">
-            <h2>Household Members</h2>
-            <hr />
             <div class="row">
-                <div class="col-md-12 well well-lg">
-                    @foreach (var user in Model.Users)
-                    {
-                        <text> @user.FirstName @user.LastName</text>
-                    }
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Household Members
+                        </div>
+                        <div class="panel-body">
+                            @foreach (var user in Model.Users)
+                            {
+                                <text> @user.FirstName @user.LastName</text>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <br />
                 <div class="col-md-12">@Html.ActionLink("Leave Household", "Leave", "Households", new { }, new { @class = "btn btn-primary" })</div>
             </div>
         </div>
 
         <div class="col-md-6">
-            @using (Html.BeginForm("Invite", "Households"))
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="form-horizontal">
-                    <h2>Send invite</h2>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-control well well-lg email-well">
-                        <div>
-                            <strong>Email address:</strong>
-
-                            @Html.TextBox("email")
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class=" col-md-10">
-                            <input type="submit" value="Send" class="btn btn-default" />
-                        </div>
-                    </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Send Invite
                 </div>
-            }
+                <div class="panel-body">
+                    <form action="@Url.Action("Invite", "Households")" method="post">
+                    
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-control">
+                                <input name="email" placeholder="Email Address" />
+                                @*<div>
+                                    @Html.TextBox("email", null, new { @placeholder = "Email Address" })
+                                </div>*@
+                            </div>
+
+                            <div class="form-group">
+                                <div class=" col-md-10">
+                                    <input type="submit" value="Send" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         
     </div>

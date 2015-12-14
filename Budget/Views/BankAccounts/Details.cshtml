@@ -18,3 +18,12 @@
 <div>
     @Html.Action("_AccountTransactions",Model.Id)
 </div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#transactionTable').DataTable();
+        })
+    </script>
+}

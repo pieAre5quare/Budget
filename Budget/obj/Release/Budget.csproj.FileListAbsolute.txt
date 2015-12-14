@@ -72,3 +72,7 @@ C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\Mi
 C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\obj\Release\Budget.csprojResolveAssemblyReference.cache
 C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\obj\Release\Budget.dll
 C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\obj\Release\Budget.pdb
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.dll
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.WebHost.dll
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.xml
+C:\Users\pieAre5quare\Documents\Visual Studio 2015\Projects\Budget\Budget\bin\System.Web.Http.WebHost.xml

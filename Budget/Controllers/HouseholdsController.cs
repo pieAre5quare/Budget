@@ -13,6 +13,7 @@ using Budget.Helpers;
 
 namespace Budget.Controllers
 {
+    [RequireHttps]
     public class HouseholdsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

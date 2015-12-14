@@ -1,1 +1,35 @@
-﻿
+﻿.bank-heading {
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.bank-balance {
+    font-size:30px;
+
+}
+
+.heading-button {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.email-well {
+    padding-bottom: 45px;
+}
+
+#transactionTable_wrapper {
+    padding: 20px;
+}
+
+.login-panel {
+    box-shadow: 0 18px 6px -8px #121212, 0 0 0 #333333
+}
+
+.login-page {
+    background-color: #2E2E2E;
+    height:100%;
+}
+
+body {
+    padding-top:0;
+}

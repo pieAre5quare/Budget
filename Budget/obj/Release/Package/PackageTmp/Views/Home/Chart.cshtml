@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Chart";
+}
+
+<div class="row">
+    <div id="MyChart" style="height: 250px;" class="col-md-6">
+
+    </div>
+    <div class="col-md-6"></div>
+</div>
+
+
+@section scripts{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        
+        $.post('@Url.Action("GetChart","Charts")').then(function (response) {
+            var next = response.length;
+            var budget = response[next - 1].b
+            
+            new Morris.Bar({
+                element: 'MyChart',
+                data: response,
+                xkey: 'y',
+                ykeys: ['a', 'b'],
+                barColors: function (row, series, type) {
+                    
+                    console.log(row);
+                    console.log(series);
+                
+                    if (series.index == 0) {
+                        
+                        if (row.y > budget) {
+                            
+                            return '#F00';
+                        } else {
+                            
+                            return '#000';
+                        }
+                        
+                        
+                    } else if (series.index == 1) {
+                        budget = row.y;
+                        return '#7A92A3';
+                    }
+
+                },
+                labels: ['Total', 'Budget']
+            });
+        });
+
+    });
+    </script>
+}

@@ -4,17 +4,15 @@
     ViewBag.Title = "_CatTransactions";
 }
 
-<h2>_CatTransactions</h2>
-
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BankAccount.Name)
+            @Html.DisplayNameFor(model => model.BankAccount)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.IsDeposit)
         </th>
@@ -40,9 +38,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BankAccount.Name)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.IsDeposit)
             </td>
@@ -59,9 +57,8 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" })
             </td>
         </tr>
     }

@@ -26,9 +26,9 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Category.Name)
                             </th>
-                            <th>
+                            @*<th>
                                 @Html.DisplayNameFor(model => model.IsReconciled)
-                            </th>
+                            </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.Date)
                             </th>
@@ -51,9 +51,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Category.Name)
                                 </td>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.IsReconciled)
-                                </td>
+                                </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Date)
                                 </td>
@@ -65,7 +65,6 @@
                                 </td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
                                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" })
                                 </td>
                             </tr>

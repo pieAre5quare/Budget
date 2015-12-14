@@ -54,9 +54,9 @@ namespace Budget
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "986455038080048",
+               appSecret: "84dc114fc4edf60600c25d74eeb9a2a6");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

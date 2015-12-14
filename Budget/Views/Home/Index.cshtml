@@ -3,12 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Dashboard</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
+<br /><br />
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -106,7 +101,7 @@
 
             new Morris.Bar({
                 element: 'MyChart',
-                data: response,
+                data: response.bar,
                 xkey: 'y',
                 ykeys: ['a', 'b'],
                 barColors: function (row, series, type) {
@@ -136,18 +131,14 @@
             });
         });
 
-    });
-    </script>
-<script type="text/javascript">
-    $(function () {
-
-        $.post('@Url.Action("SpendingChart","Charts")').then(function (response) {
-            new Morris.Bar({
+        $.post('@Url.Action("GetChart","Charts")').then(function (response) {
+            new Morris.Donut({
                 element: 'spending-chart',
-                data: response
+                data: response.donut
             });
         });
 
     });
-</script>
+    </script>
+
 }

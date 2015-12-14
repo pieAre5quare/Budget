@@ -4,40 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
-
-        <dd>
+<br /><br />
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="bank-heading">
             @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.BudgetedAmount)
-        </dt>
-
-        <dd>
+        </div>
+        @if(Model.Category.BudgetedAmount != null) { 
+        <div class="bank-balance">
+            Budget used:
             @Html.DisplayFor(model => model.BudgetUsed)
             <text>Of</text>
             @Html.DisplayFor(model => model.Category.BudgetedAmount)
-        </dd>
-
-    </dl>
+        </div>
+        }
+    </div>
 </div>
+
+<br /><br />
+
 
 <div>
     @Html.Action("_CatTransactions", new { id = Model.Category.Id })
 </div>
 
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Category.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
