@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">@Html.ActionLink("Leave Household", "Leave", "Households", new { }, new { @class = "btn btn-primary" })</div>
+                <div class="col-md-12">@Html.ActionLink("Leave Household", "Leave", "Households", null, new { @class = "btn btn-primary" })</div>
             </div>
         </div>
 
@@ -33,13 +33,14 @@
                 </div>
                 <div class="panel-body">
                     @using (Html.BeginForm("Invite", "Households"))
-            {
+                    {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
                             
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-control well well-lg email-well">
+                            <div class="form-control email-well">
+                                
                                 <div>
                                     @Html.TextBox("email", null, new { @placeholder = "Email Address" })
                                 </div>

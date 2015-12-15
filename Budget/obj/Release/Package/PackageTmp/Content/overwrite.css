@@ -14,7 +14,9 @@
 }
 
 .email-well {
-    padding-bottom: 45px;
+    border:0;
+    box-shadow:none;
+    padding-left: 0;
 }
 
 #transactionTable_wrapper {

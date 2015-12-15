@@ -136,10 +136,10 @@ namespace Budget.Controllers
         }
 
         // Get: Households/Invite
-        public ActionResult Invite()
-        {
-            return View();
-        }
+        //public ActionResult Invite()
+        //{
+        //    return View();
+        //}
 
         // Post: Households/Invite
         [HttpPost]

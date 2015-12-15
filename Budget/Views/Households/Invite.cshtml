@@ -3,24 +3,13 @@
     ViewBag.Title = "Invite";
 }
 
-<h2>Invite</h2>
-
-@using (Html.BeginForm("Invite","Households"))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Email invite</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-control">
-            @Html.TextBox("email")
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Send" class="btn btn-default" />
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Invite Sent!</h1>
+        <img src="~/Content/email-marketing.jpg" width="800" />
     </div>
-}
+    <div class="col-md-12 text-center">
+        <br /><br />
+        @Html.ActionLink("Back to Dashboard", "Index", "Home", null, new { @class = "btn btn-primary" })
+    </div>
+</div>

@@ -95,54 +95,56 @@
     <script type="text/javascript">
     $(function () {
 
-        $.post('@Url.Action("GetChart","Charts")').then(function (response) {
-            var next = response.length;
-            var budget = response[next - 1].b
+        $.post('@Url.Action("GetChart","Home")').then(function (response) {
+
+            new Morris.Donut({
+                element: 'spending-chart',
+                data: response.donut
+            });
+
+            //var next = response.bar.length;
+            //var budget = response[next - 1].b
 
             new Morris.Bar({
                 element: 'MyChart',
-                data: response,
+                data: response.bar,
                 xkey: 'y',
                 ykeys: ['a', 'b'],
-                barColors: function (row, series, type) {
+                //barColors: function (row, series, type) {
 
-                    console.log(row);
-                    console.log(series);
+                //    console.log(row);
+                //    console.log(series);
 
-                    if (series.index == 0) {
+                //    if (series.index == 0) {
 
-                        if (row.y > budget) {
+                //        if (row.y > budget) {
 
-                            return '#F00';
-                        } else {
+                //            return '#F00';
+                //        } else {
 
-                            return '#000';
-                        }
+                //            return '#000';
+                //        }
 
 
-                    } else if (series.index == 1) {
-                        budget = row.y;
-                        return '#7A92A3';
-                    }
+                //    } else if (series.index == 1) {
+                //        budget = row.y;
+                //        return '#7A92A3';
+                //    }
 
-                },
+                //},
                 labels: ['Total', 'Budget'],
                 hideHover: false
             });
         });
 
-    });
-    </script>
-<script type="text/javascript">
-    $(function () {
-
-        $.post('@Url.Action("SpendingChart","Charts")').then(function (response) {
+        @*$.post('@Url.Action("GetChart","Charts")').then(function (response) {
             new Morris.Donut({
                 element: 'spending-chart',
-                data: response
+                data: response.donut
             });
-        });
+        });*@
 
     });
-</script>
+    </script>
+
 }
