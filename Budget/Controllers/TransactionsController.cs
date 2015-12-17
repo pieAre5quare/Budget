@@ -44,13 +44,19 @@ namespace Budget.Controllers
 
         // GET: Transactions/Create
         [AuthorizeHouseholdRequired]
-        public ActionResult Create(int id)
+        public ActionResult Create(int? id)
         {
             var hh = db.Households.Find(Convert.ToInt32(User.Identity.GetHouseholdId()));
 
             ViewBag.CategoryId = new SelectList(hh.Categories, "Id", "Name");
             Transaction transaction = new Transaction();
-            transaction.BankAccountId = id;
+            if(id == null)
+            {
+                transaction.BankAccountId = -1;
+                ViewBag.BankAccountId = new SelectList(hh.Accounts.Where(b => !b.IsArchived), "Id", "Name");
+            } else { 
+            transaction.BankAccountId = (int)id;
+            }
             transaction.Date = DateTimeOffset.Now;
             
             return View(transaction);
